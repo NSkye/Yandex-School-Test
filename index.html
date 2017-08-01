@@ -33,9 +33,23 @@
 	<form id="setData" class="controlElement">
 		<span class="controlElement__heading">Установить значения</span>
 		<div class="wrapper">
-		<span class="pseudo">MyForm.setData({</span><br><span class="pseudo">&nbsp;fio: '</span><input name="fio" type="text" value="Иванов Иван Иванович"><span class="pseudo">',</span><br><span class="pseudo">&nbsp;email: '</span>
-  		<input name="email" type="text" value="ivan-ivanov@yandex.ru"><span class="pseudo">',</span><br><span class="pseudo">&nbsp;phone: '</span>
-  		<input name="phone" type="text" value="+7(000)000-00-00"><span class="pseudo">'<br>});</span>
+			<span class="pseudo">MyForm.setData({</span><br>
+			<span class="pseudo">&nbsp;fio: '</span>
+			
+			<!--FIO-->
+			<input name="fio" type="text" value="Иванов Иван Иванович">
+			<span class="pseudo">',</span><br>
+			<span class="pseudo">&nbsp;email: '</span>
+			
+			<!--EMAIL-->
+	  		<input name="email" type="text" value="ivan-ivanov@yandex.ru">
+	  		<span class="pseudo">',</span><br>
+	  		<span class="pseudo">&nbsp;phone: '</span>
+			
+			<!--PHONE-->
+	  		<input name="phone" type="text" value="+7(000)000-00-00">
+	  		<span class="pseudo">'
+	  		<br>});</span>
   		</div>
   		<div class="buttonContainer"><div class="buttonContainer__button buttonContainer__button--single" id="setDataButton">Установить</div></div>
 	</form>
