@@ -11,7 +11,7 @@ let MyForm = {
 				checkFio	  = / *(([А-я]+(\-?[А-я]+)*([\'\’‎]?[А-я]+)*)+ +){2}(([А-я]+(\-?[А-я]+)*([\'\’‎]?[А-я]+))+ *)/
 				notValidFio	  = !fio.match(checkFio) || fio!==fio.match(checkFio)[0],
 				/*ВАЛИДАЦИЯ ПОЧТЫ*/
-				checkEmail 	  = /[A-z]+\d*([\.\-]?[A-z]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/,
+				checkEmail 	  = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/,
 				notValidEmail = !email.match(checkEmail) || email!==email.match(checkEmail)[0] || (email.split('@')[0].length>30),
 				/*ВАДИДАЦИЯ ТЕЛЕФОНА*/
 				checkPhone	  = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/,
