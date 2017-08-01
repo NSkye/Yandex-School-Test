@@ -1,3 +1,4 @@
+/*ЗАДАНИЕ*/
 body {
   margin: 0;
   padding: 0;
@@ -118,6 +119,7 @@ input:hover {
 #resultContainer.error {
   color: #f00;
 }
+/*ДОПОЛНИТЕЛЬНО*/
 #controlsContainer {
   margin: 0 auto;
   height: auto;
