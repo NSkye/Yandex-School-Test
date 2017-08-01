@@ -45,7 +45,7 @@ notValidFio = !fio.match(checkFio) || fio!==fio.match(checkFio)[0],
 Правила составлены исходя из соответствующих ограничений в сервисах Яндекс
 
 ```javascript
-checkEmail = /[A-z]+\d*([\.\-]?[A-z]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/,
+checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/,
 notValidEmail = !email.match(checkEmail) 
 || email!==email.match(checkEmail)[0] 
 || (email.split('@')[0].length>30),
