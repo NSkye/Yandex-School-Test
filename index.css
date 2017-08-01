@@ -1,0 +1,246 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+}
+body *:hover {
+  cursor: default;
+}
+h3 {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 7%;
+}
+h3:after {
+  content: "™";
+  position: absolute;
+  font-size: 60%;
+}
+#myForm {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 600px;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0 auto;
+  color: #a9a9a9;
+  margin-bottom: 10px;
+}
+input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+  color: #808080;
+  font-size: 120%;
+  text-align: center;
+  overflow: hidden;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+input:focus {
+  outline: 1px solid #fc0;
+  border-color: rgba(0,0,0,0);
+}
+input:hover {
+  cursor: text;
+}
+.label {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 2px;
+}
+#submitButton {
+  margin-top: 20px;
+  font-size: 100%;
+  height: 60px;
+  background-color: #fc0;
+  border: none;
+  outline: none;
+  font-weight: 600;
+}
+#submitButton:hover {
+  cursor: pointer;
+}
+#submitButton:active {
+  color: #f00;
+  font-size: 98%;
+}
+#submitButton:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+#myForm .error {
+  border: 1px solid #f00;
+}
+#resultContainer {
+  margin: 0 auto;
+  width: 600px;
+  height: 50px;
+  text-align: center;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+#resultContainer.success {
+  color: #008000;
+}
+#resultContainer.error {
+  color: #f00;
+}
+#resultContainer.progress {
+  color: #000;
+  -webkit-animation: blinking 0.5s linear alternate infinite;
+          animation: blinking 0.5s linear alternate infinite;
+}
+#resultContainer.success {
+  color: #008000;
+}
+#resultContainer.error {
+  color: #f00;
+}
+#controlsContainer {
+  margin: 0 auto;
+  height: auto;
+  width: 600px;
+  background: #f5f5f5;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.controlElement {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 200px;
+  width: 285px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #000;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+.controlElement__heading {
+  top: 0;
+  position: absolute;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 80%;
+  margin-bottom: 5px;
+  margin-top: 25px;
+}
+.buttonContainer {
+  width: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.buttonContainer__button {
+  text-align: center;
+  border: none;
+  width: 100%;
+  background: #fff;
+  outline: none;
+  font-size: 15px;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+.buttonContainer__button:active {
+  outline: none;
+  background: #fc0;
+}
+.buttonContainer__button:hover {
+  cursor: pointer;
+  background: #fffaea;
+}
+.buttonContainer__button--single:active {
+  color: #f00;
+}
+.buttonContainer__button--single:hover {
+  background: #fc0;
+}
+.buttonContainer__button--active {
+  background: #fc0;
+}
+.buttonContainer__button--active:hover {
+  background: #fc0;
+}
+.buttonContainer__button--active:active {
+  background: #e0b300;
+}
+#setData input,
+#setData .pseudo {
+  width: auto;
+  background: none;
+  font-size: 11px;
+  font-family: monospace;
+}
+#setData>.wrapper {
+  margin-bottom: 5px;
+}
+#setData>.wrapper>* {
+  display: inline;
+}
+.tip {
+  width: 100%;
+  margin: 5px;
+  font-size: 12px;
+  text-align: center;
+  opacity: 0.4;
+}
+@-webkit-keyframes blinking {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
+@keyframes blinking {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
+}
