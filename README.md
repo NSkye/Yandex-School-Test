@@ -34,6 +34,7 @@
 
 Примеры:
 ya@ya.ru, henry-ford@yandex.by, henry.ford@yandex.kz, henryford63@yandex.ua, henry-fordhenry-fordhenry-ford@yandex.ru — пройдут валидацию;
+
 ya.ru, @ya.ru, henry---ford@yandex.by, .henry.ford@yandex.kz, 63henryford@yandex.ua, henry.-ford@ya.ru, henry-fordhenry-fordhenry-ford1@yandex.ru — не пройдут валидацию.
 
 ### Правила валидации телефона
