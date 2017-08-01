@@ -8,7 +8,7 @@ let MyForm = {
 				phone 		  = Data.phone, 
 				email 		  = Data.email,
 				/*ВАЛИДАЦИЯ ФИО*/
-				checkFio	  = / *(([А-я]+(\-?[А-я]+)*([\'\’‎]?[А-я]+)*)+ +){2}(([А-я]+(\-?[А-я]+)*([\'\’‎]?[А-я]+))+ *)/
+				checkFio	  = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/
 				notValidFio	  = !fio.match(checkFio) || fio!==fio.match(checkFio)[0],
 				/*ВАЛИДАЦИЯ ПОЧТЫ*/
 				checkEmail 	  = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/,
