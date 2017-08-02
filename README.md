@@ -20,8 +20,8 @@
 Ограничений на количество букв не накладывалось. В теории слово, в том числе и Имя/Фамилия/Отчество может состоять из одной буквы.
 
 ```javascript
-checkFio = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/
-notValidFio = !fio.match(checkFio) || fio!==fio.match(checkFio)[0],
+checkFio = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/g,
+notValidFio = !fio.match(checkFio) || fio !== fio.match(checkFio)[0],
 ```
 
 Примеры:
@@ -45,10 +45,10 @@ notValidFio = !fio.match(checkFio) || fio!==fio.match(checkFio)[0],
 Правила составлены исходя из соответствующих ограничений в сервисах Яндекс
 
 ```javascript
-checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/,
+checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/g,
 notValidEmail = !email.match(checkEmail) 
-|| email!==email.match(checkEmail)[0] 
-|| (email.split('@')[0].length>30),
+|| email !== email.match(checkEmail)[0] 
+|| (email.split('@')[0].length > 30),
 ```
 
 Примеры:
@@ -64,13 +64,12 @@ ya.ru, @ya.ru, henry---ford@yandex.by, .henry.ford@yandex.kz, 63henryford@yandex
 2. Сумма всех цифр не может превышать 30
 
 ```javascript
-checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/,
+checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g,
 notValidPhone = !phone.match(checkPhone) 
-|| phone!==phone.match(checkPhone)[0] 
+|| phone !== phone.match(checkPhone)[0] 
 || (phone.replace(/[\+\(\)\-]/g, "")
-.split("")
-.reduce((a,b)=>Number(a)+Number(b)))
->30;
+    .split("")
+    .reduce((a, b) => Number(a) + Number(b))) > 30;
 ```
 
 ##### Примечания
