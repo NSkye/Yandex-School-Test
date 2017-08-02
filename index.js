@@ -38,10 +38,7 @@ let MyForm = {
         console.log(email.match(checkEmail));
         console.log(phone.match(checkPhone));
 
-        return {
-            isValid,
-            errorFields
-        };
+        return { isValid, errorFields };
     },
 
     getData: function() {
@@ -50,11 +47,7 @@ let MyForm = {
             email = coreForm.email.value,
             phone = coreForm.phone.value;
 
-        return {
-            fio,
-            email,
-            phone
-        };
+        return { fio, email, phone };
     },
 
     setData: function(values) {
@@ -190,9 +183,5 @@ setDataButton.addEventListener("click", function() {
         fio = setDataForm.fio.value,
         email = setDataForm.email.value,
         phone = setDataForm.phone.value;
-    MyForm.setData({
-        fio,
-        email,
-        phone
-    });
+    MyForm.setData({ fio, email, phone });
 }, false)
