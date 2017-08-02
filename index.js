@@ -16,8 +16,8 @@ let MyForm = {
             /*ВАДИДАЦИЯ ТЕЛЕФОНА*/
             checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g,
             notValidPhone = !phone.match(checkPhone) || phone !== phone.match(checkPhone)[0] || (phone.replace(/[\+\(\)\-]/g, "")
-            .split("")
-            .reduce((a, b) => Number(a) + Number(b))) > 30;
+                .split("")
+                .reduce((a, b) => Number(a) + Number(b))) > 30;
 
         if (notValidFio) {
             isValid = false;
@@ -145,8 +145,6 @@ var submit = document.getElementById("submitButton");
 submit.addEventListener("click", () => {
     MyForm.submit();
 }, false);
-
-
 
 /*ДОПОЛНИТЕЛЬНО*/
 /*controlContainer*/
