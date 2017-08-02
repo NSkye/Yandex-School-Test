@@ -33,11 +33,7 @@ let MyForm = {
             isValid = false;
             errorFields.push("phone");
         }
-
-        console.log(fio.match(checkFio));
-        console.log(email.match(checkEmail));
-        console.log(phone.match(checkPhone));
-
+        
         return { isValid, errorFields };
     },
 
