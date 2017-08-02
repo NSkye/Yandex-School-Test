@@ -141,47 +141,36 @@ submit.addEventListener("click", () => {
 
 /*ДОПОЛНИТЕЛЬНО*/
 /*controlContainer*/
-let successButton = document.getElementById("successBtn"),
-    errorButton = document.getElementById("errorBtn"),
-    progressButton = document.getElementById("progressBtn"),
-    coreForm = document.getElementById("myForm"),
-    setDataButton = document.getElementById("setDataButton"),
+let coreForm = document.getElementById("myForm"),
+    controlsContainer = document.getElementById("controlsContainer"),
     removeActiveState = function() {
         let activeButtons = document.getElementsByClassName("buttonContainer__button--active"),
             i = activeButtons.length - 1;
         while (activeButtons[i]) {
             activeButtons[i].classList.remove("buttonContainer__button--active");
         }
-    },
-    applyState = function(state) {
-        if (state === "success") {
-            removeActiveState();
-            successButton.classList.add("buttonContainer__button--active");
-            coreForm.setAttribute("action", "ajax/success.json");
-        } else if (state === "error") {
-            removeActiveState();
-            errorButton.classList.add("buttonContainer__button--active");
-            coreForm.setAttribute("action", "ajax/error.json");
-        } else if (state === "progress") {
-            removeActiveState();
-            progressButton.classList.add("buttonContainer__button--active");
-            coreForm.setAttribute("action", "ajax/progress.json");
-        }
     };
 
-successButton.addEventListener("click", () => {
-    applyState("success");
-}, false)
-errorButton.addEventListener("click", () => {
-    applyState("error");
-}, false)
-progressButton.addEventListener("click", () => {
-    applyState("progress");
-}, false)
-setDataButton.addEventListener("click", function() {
-    const setDataForm = document.getElementById("setData"),
-        fio = setDataForm.fio.value,
-        email = setDataForm.email.value,
-        phone = setDataForm.phone.value;
-    MyForm.setData({ fio, email, phone });
-}, false)
+controlsContainer.addEventListener("click", (e)=> {
+    const btn = e.target;
+    if (btn.id==="successBtn") {
+        removeActiveState();
+        btn.classList.add("buttonContainer__button--active");
+        coreForm.setAttribute("action", "ajax/success.json");
+    } else if (btn.id==="errorBtn") {
+        removeActiveState();
+        btn.classList.add("buttonContainer__button--active");
+        coreForm.setAttribute("action", "ajax/error.json");
+    } else if (btn.id==="progressBtn") {
+        removeActiveState();
+        btn.classList.add("buttonContainer__button--active");
+        coreForm.setAttribute("action", "ajax/progress.json");
+    } else if (btn.id==="setDataBtn") {
+        const setDataForm = document.getElementById("setData"),
+            fio = setDataForm.fio.value,
+            email = setDataForm.email.value,
+            phone = setDataForm.phone.value;
+        
+        MyForm.setData({ fio, email, phone });
+    }
+});
