@@ -1,23 +1,23 @@
 /*ЗАДАНИЕ*/
 let MyForm = {
     validate: function() {
-	    let isValid = true,
-	        errorFields = [];
-	    const Data = this.getData(),
-	        fio = Data.fio,
-	        phone = Data.phone,
-	        email = Data.email,
-	        /*ВАЛИДАЦИЯ ФИО*/
-        	checkFio = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/g,
-            	notValidFio = !fio.match(checkFio) || fio !== fio.match(checkFio)[0],
-	        /*ВАЛИДАЦИЯ ПОЧТЫ*/
-	        checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/g,
-	        notValidEmail = !email.match(checkEmail) || email !== email.match(checkEmail)[0] || (email.split('@')[0].length > 30),
-	        /*ВАДИДАЦИЯ ТЕЛЕФОНА*/
-	        checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g,
-	        notValidPhone = !phone.match(checkPhone) || phone !== phone.match(checkPhone)[0] || (phone.replace(/[\+\(\)\-]/g, "")
-	            .split("")
-	            .reduce((a, b) => Number(a) + Number(b))) > 30;
+        let isValid = true,
+            errorFields = [];
+        const Data = this.getData(),
+            fio = Data.fio,
+            phone = Data.phone,
+            email = Data.email,
+            /*ВАЛИДАЦИЯ ФИО*/
+            checkFio = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/g,
+            notValidFio = !fio.match(checkFio) || fio !== fio.match(checkFio)[0],
+            /*ВАЛИДАЦИЯ ПОЧТЫ*/
+            checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/g,
+            notValidEmail = !email.match(checkEmail) || email !== email.match(checkEmail)[0] || (email.split('@')[0].length > 30),
+            /*ВАДИДАЦИЯ ТЕЛЕФОНА*/
+            checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g,
+            notValidPhone = !phone.match(checkPhone) || phone !== phone.match(checkPhone)[0] || (phone.replace(/[\+\(\)\-]/g, "")
+            .split("")
+            .reduce((a, b) => Number(a) + Number(b))) > 30;
 
         if (notValidFio) {
             isValid = false;
@@ -45,28 +45,28 @@ let MyForm = {
     },
 
     getData: function() {
-	    const coreForm = document.getElementById("myForm"),
-	        fio = coreForm.fio.value,
-	        email = coreForm.email.value,
-	        phone = coreForm.phone.value;
+        const coreForm = document.getElementById("myForm"),
+            fio = coreForm.fio.value,
+            email = coreForm.email.value,
+            phone = coreForm.phone.value;
 
-	    return {
-	        fio,
-	        email,
-	        phone
-	    };
+        return {
+            fio,
+            email,
+            phone
+        };
     },
 
     setData: function(values) {
-	    let coreForm = document.getElementById("myForm");
-		    coreForm.fio.value = values.fio;
-		    coreForm.email.value = values.email;
-		    coreForm.phone.value = values.phone;
+        let coreForm = document.getElementById("myForm");
+        coreForm.fio.value = values.fio;
+        coreForm.email.value = values.email;
+        coreForm.phone.value = values.phone;
     },
 
     submit: function() {
         let currentErrorFields = document.getElementsByClassName('error'),
-        	j = 0;
+            j = 0;
 
         while (currentErrorFields[j])
             currentErrorFields[j].classList.remove('error');
