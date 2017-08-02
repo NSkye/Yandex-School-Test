@@ -1,47 +1,47 @@
 /*ЗАДАНИЕ*/
 let MyForm = {
-        validate: function() {
-                let isValid = true,
-                    errorFields = [];
-                const Data = this.getData(),
-                    fio = Data.fio,
-                    phone = Data.phone,
-                    email = Data.email,
-                    /*ВАЛИДАЦИЯ ФИО*/
-                    checkFio = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/g
-                notValidFio = !fio.match(checkFio) || fio !== fio.match(checkFio)[0],
-                    /*ВАЛИДАЦИЯ ПОЧТЫ*/
-                    checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/g,
-                    notValidEmail = !email.match(checkEmail) || email !== email.match(checkEmail)[0] || (email.split('@')[0].length > 30),
-                    /*ВАДИДАЦИЯ ТЕЛЕФОНА*/
-                    checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g,
-                    notValidPhone = !phone.match(checkPhone) || phone !== phone.match(checkPhone)[0] || (phone.replace(/[\+\(\)\-]/g, "")
-                        .split("")
-                        .reduce((a, b) => Number(a) + Number(b))) > 30;
+    validate: function() {
+            let isValid = true,
+                errorFields = [];
+            const Data = this.getData(),
+                fio = Data.fio,
+                phone = Data.phone,
+                email = Data.email,
+                /*ВАЛИДАЦИЯ ФИО*/
+                checkFio = / *(([А-я]+([\'\’\-‎]?[А-я]+)*)+ +){2}(([А-я]+([\'\’\-‎]?[А-я]+)*)+ *)/g
+            notValidFio = !fio.match(checkFio) || fio !== fio.match(checkFio)[0],
+                /*ВАЛИДАЦИЯ ПОЧТЫ*/
+                checkEmail = /[A-z]+\d*([\.\-]?[A-z\d]+)*@(ya.ru|yandex.ru|yandex.ua|yandex.by|yandex.kz|yandex.com)/g,
+                notValidEmail = !email.match(checkEmail) || email !== email.match(checkEmail)[0] || (email.split('@')[0].length > 30),
+                /*ВАДИДАЦИЯ ТЕЛЕФОНА*/
+                checkPhone = /\+7\(\d{3}\)\d{3}\-\d{2}\-\d{2}/g,
+                notValidPhone = !phone.match(checkPhone) || phone !== phone.match(checkPhone)[0] || (phone.replace(/[\+\(\)\-]/g, "")
+                    .split("")
+                    .reduce((a, b) => Number(a) + Number(b))) > 30;
 
-        if (notValidFio) {
-            isValid = false;
-            errorFields.push("fio");
-        }
+            if (notValidFio) {
+                isValid = false;
+                errorFields.push("fio");
+            }
 
-        if (notValidEmail) {
-            isValid = false;
-            errorFields.push("email");
-        }
+            if (notValidEmail) {
+                isValid = false;
+                errorFields.push("email");
+            }
 
-        if (notValidPhone) {
-            isValid = false;
-            errorFields.push("phone");
-        }
+            if (notValidPhone) {
+                isValid = false;
+                errorFields.push("phone");
+            }
 
-        console.log(fio.match(checkFio));
-        console.log(email.match(checkEmail));
-        console.log(phone.match(checkPhone));
+            console.log(fio.match(checkFio));
+            console.log(email.match(checkEmail));
+            console.log(phone.match(checkPhone));
 
-        return {
-            isValid,
-            errorFields
-        };
+            return {
+                isValid,
+                errorFields
+            };
     },
 
     getData: function() {
@@ -125,9 +125,7 @@ let MyForm = {
                     RC.classList.add("error");
                     RC.textContent = "Response status is not correct";
                 }
-
             }
-
             req.addEventListener("load", () => {
                 if (req.status < 400)
                     responseHandler(req);
@@ -137,8 +135,6 @@ let MyForm = {
                     RC.textContent = "Error has occured. Code: " + req.status;
                 }
             });
-
-
             req.open(reqMethod, reqAddress(), true);
             req.send(null);
         }
