@@ -82,11 +82,9 @@ let MyForm = {
             let responseHandler = function(req) {
                 response = JSON.parse(req.responseText);
                 RC.className = "";
-
-                console.log("Loaded:", req.responseText);
-
-                if (response.status === "progress") {
-                    let tmt = response.timeout,
+            const responseTable = {
+                "progress": () => {
+                     let tmt = response.timeout,
                         counter = response.timeout;
 
                     RC.classList.add("progress");
@@ -103,18 +101,27 @@ let MyForm = {
                         req.open(reqMethod, reqAddress(), true)
                         req.send(null);
                     }, tmt);
-
-                } else if (response.status === "success") {
+                },
+                "success": () => {
                     RC.classList.add("success");
                     RC.textContent = "Success";
-                } else if (response.status === "error") {
+                },
+                "error": ()=> {
                     RC.classList.add("error");
                     RC.textContent = "Error has occured. Reason: " + response.reason;
+                }
+            }
+
+                console.log("Loaded:", req.responseText);
+
+                if (responseTable.hasOwnProperty(response.status)) {
+                   responseTable[response.status]();
                 } else {
                     RC.classList.add("error");
                     RC.textContent = "Response status is not correct";
                 }
             }
+
             req.addEventListener("load", () => {
                 if (req.status < 400)
                     responseHandler(req);
@@ -124,6 +131,7 @@ let MyForm = {
                     RC.textContent = "Error has occured. Code: " + req.status;
                 }
             });
+
             req.open(reqMethod, reqAddress(), true);
             req.send(null);
         }
@@ -148,25 +156,30 @@ let coreForm = document.getElementById("myForm"),
     };
 
 controlsContainer.addEventListener("click", (e)=> {
-    const btn = e.target;
-    if (btn.id==="successBtn") {
-        removeActiveState();
-        btn.classList.add("buttonContainer__button--active");
-        coreForm.setAttribute("action", "ajax/success.json");
-    } else if (btn.id==="errorBtn") {
-        removeActiveState();
-        btn.classList.add("buttonContainer__button--active");
-        coreForm.setAttribute("action", "ajax/error.json");
-    } else if (btn.id==="progressBtn") {
-        removeActiveState();
-        btn.classList.add("buttonContainer__button--active");
-        coreForm.setAttribute("action", "ajax/progress.json");
-    } else if (btn.id==="setDataBtn") {
-        const setDataForm = document.getElementById("setData"),
-            fio = setDataForm.fio.value,
-            email = setDataForm.email.value,
-            phone = setDataForm.phone.value;
-        
-        MyForm.setData({ fio, email, phone });
-    }
+    const btn = e.target,
+        controlsTable = {
+            "successBtn": () => {
+                removeActiveState();
+                btn.classList.add("buttonContainer__button--active");
+                coreForm.setAttribute("action", "ajax/success.json");
+            },
+            "errorBtn": () => {
+                removeActiveState();
+                btn.classList.add("buttonContainer__button--active");
+                coreForm.setAttribute("action", "ajax/error.json");
+            },
+            "progressBtn": () => {
+                removeActiveState();
+                btn.classList.add("buttonContainer__button--active");
+                coreForm.setAttribute("action", "ajax/progress.json");
+            },
+            "setDataBtn": () => {
+                const setDataForm = document.getElementById("setData"),
+                    fio = setDataForm.fio.value,
+                    email = setDataForm.email.value,
+                    phone = setDataForm.phone.value;
+                MyForm.setData({ fio, email, phone });
+            }
+        };
+    controlsTable[btn.id]();
 });
